@@ -1,5 +1,25 @@
+# Ambiente virtual
 venv/
+
+# Arquivos de cache do Python
 __pycache__/
 *.pyc
+
+# Arquivos de configuração do VS Code
+.vscode/
+
+# Arquivos de configuração de ambiente
 .env
+
+# Arquivos do sistema operacional (exemplo para macOS)
+.DS_Store
+
+# Arquivos de logs
+*.log
+
+# Arquivos gerados por ferramentas de testes
+*.db
+
+# Outros arquivos temporários
+*.swp
 
