@@ -24,16 +24,24 @@ A arquitetura do projeto foi organizada de forma modular para fácil manutençã
 ```
 api-torneio-de-xadrez/
 ├── app/
-│   ├── __init__.py               # Arquivo de inicialização
-│   ├── models/                   # Modelos de dados
-│   ├── schemas/                  # Schemas Pydantic para validação de dados
-│   ├── rotas/                    # Endpoints da API
-│   │   ├── jogador.py            # Endpoints para jogadores
-│   │   └── torneio.py            # Endpoints para torneios
-│   ├── banco_simulado.py         # Banco de dados simulado (para testes e desenvolvimento)
-│   ├── servidor.py               # Arquivo de inicialização da aplicação FastAPI
-├── venv/                         # Ambiente virtual com dependências
-└── requirements.txt              # Dependências do projeto
+│ ├── init.py # Arquivo de inicialização
+│ ├── database/ # Conexões e configurações do banco de dados
+│ │ └── connection.py # Configuração da conexão com o MongoDB
+│ ├── models/ # Modelos de dados
+│ │ ├── enxadrista_model.py # Modelo de jogador
+│ │ └── torneio_model.py # Modelo de torneio
+│ ├── repositories/ # Lógica de acesso a dados (CRUD)
+│ │ ├── enxadrista_repository.py # Repositório de jogadores
+│ │ └── torneio_repository.py # Repositório de torneios
+│ ├── routes/ # Endpoints da API
+│ │ ├── enxadrista_routes.py # Endpoints para jogadores
+│ │ └── torneio_routes.py # Endpoints para torneios
+├── main.py # Arquivo principal que executa o servidor FastAPI
+├── requirements.txt # Dependências do projeto
+└── tests/ # Testes automatizados
+├── init.py
+├── conftest.py # Configurações de teste
+└── test_main.py # Testes principais da API
 ```
 
 ---
@@ -45,6 +53,7 @@ api-torneio-de-xadrez/
 - Python 3.7+
 - Uvicorn
 - FastAPI
+- MongoDB (local ou em nuvem)
 
 ### Passo a Passo para Instalação
 
@@ -53,26 +62,19 @@ api-torneio-de-xadrez/
    ```bash
    git clone https://github.com/wagnersantan/api-torneio-de-xadrez.git
    cd api-torneio-de-xadrez
-   ```
 
 2. **Crie um ambiente virtual**:
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # No Windows, use: venv\Scripts\activate
-   ```
+  python3 -m venv venv
+source venv/bin/activate  # No Windows, use: venv\Scripts\activate
 
 3. **Instale as dependências**:
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+ pip install -r requirements.txt
 
 4. **Inicie o servidor**:
 
-   ```bash
-   uvicorn app.servidor:app --reload
-   ```
+   uvicorn main:app --reload
 
    O servidor estará rodando em [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
