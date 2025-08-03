@@ -1,9 +1,16 @@
 from pydantic import BaseModel
-from datetime import date
+from datetime import datetime
+from enum import Enum
+
+class StatusTorneio(str, Enum):
+    ABERTO = "aberto"
+    ENCERRADO = "encerrado"
+    EM_ANDAMENTO = "em_andamnto"
 
 class Torneio(BaseModel):
     nome: str
-    data_inicio: date
-    data_fim: date
+    status: StatusTorneio
+    data_inicio: datetime
+    data_fim: datetime
     local: str
-    status: str  # Ex: "agendado", "em andamento", "finalizado"
+    

@@ -1,5 +1,5 @@
 
-# API de Torneio de Xadrez
+## API de Torneio de Xadrez
 
 Esta é uma **API RESTful** construída com **FastAPI** para organizar e gerenciar torneios de xadrez. A API permite o registro de jogadores, a exibição de dados dos torneios, além da gestão de jogadores, árbitros e organizadores.
 
@@ -20,7 +20,6 @@ Esta é uma **API RESTful** construída com **FastAPI** para organizar e gerenci
 ## Estrutura do Projeto
 
 A arquitetura do projeto foi organizada de forma modular para fácil manutenção e escalabilidade. A estrutura de diretórios é a seguinte:
-
 ```
 api-torneio-de-xadrez/
 ├── app/
@@ -46,22 +45,27 @@ api-torneio-de-xadrez/
 
 ---
 
-## Como Rodar a Aplicação
+---
 
-### Requisitos
+## Requisitos
 
 - Python 3.7+
 - Uvicorn
 - FastAPI
-- MongoDB (local ou em nuvem)
+- MongoDB (recomendado para produção, opcional para testes em modo simulado)
+
+---
+
+## Como Rodar a Aplicação
 
 ### Passo a Passo para Instalação
 
 1. **Clone o repositório**:
 
-   ```bash
-   git clone https://github.com/wagnersantan/api-torneio-de-xadrez.git
-   cd api-torneio-de-xadrez
+```bash
+git clone https://github.com/wagnersantan/api-torneio-de-xadrez.git
+cd api-torneio-de-xadrez
+
 
 2. **Crie um ambiente virtual**:
 
@@ -72,20 +76,30 @@ source venv/bin/activate  # No Windows, use: venv\Scripts\activate
 
  pip install -r requirements.txt
 
-4. **Inicie o servidor**:
+
+4.*** Modo com MongoDB configurado (produção):
+
+Certifique-se de que o MongoDB esteja rodando localmente ou configure sua conexão com MongoDB em nuvem no arquivo app/database/connection.py.
+
+Depois, execute:
 
    uvicorn main:app --reload
 
-   O servidor estará rodando em [http://127.0.0.1:8000](http://127.0.0.1:8000).
+Modo simulado (sem banco de dados, para testes rápidos):
 
+Comente ou remova as partes do código que fazem conexão com o banco (como no main.py a função que insere torneio de teste e as chamadas ao db), para evitar erros de conexão.
+
+Depois, execute:
+
+uvicorn main:app --reload
 ---
 
-## Testando a API
+Testando a API
+Você pode testar os endpoints da API de forma interativa através da documentação gerada automaticamente pelo FastAPI:
 
-Você pode testar os endpoints da API de forma interativa através da documentação gerada automaticamente pelo **FastAPI**:
+Swagger UI: http://127.0.0.1:8000/docs
 
-- **Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- **ReDoc**: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+ReDoc: http://127.0.0.1:8000/redoc
 
 ---
 

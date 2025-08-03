@@ -1,17 +1,27 @@
 from fastapi import APIRouter
-from app.models.torneio_model import Torneio
-from app.repositories.torneio_repository import cadastrar_torneio, listar_torneios
+from pydantic import BaseModel
 
 router = APIRouter()
 
+class Torneio(BaseModel):
+    nome: str
+    local: str
+    data: str
+
+# Dados mockados
+torneios_mock = [
+    Torneio(nome="Torneio ABC", local="São Paulo", data="2025-08-15"),
+    Torneio(nome="Copa XYZ", local="Rio de Janeiro", data="2025-09-01"),
+]
+
 @router.post("/")
 def criar_torneio(torneio: Torneio):
-    torneio_cadastrado = cadastrar_torneio(torneio)
-    return {"mensagem": "Torneio cadastrado com sucesso", "dados": torneio_cadastrado}
+    # Só retorna o que recebeu, simulando cadastro
+    return {
+        "mensagem": "Torneio cadastrado com sucesso (simulado)!",
+        "dados": torneio
+    }
 
 @router.get("/")
 def obter_torneios():
-    torneios = listar_torneios()
-    return {"torneios": torneios}
-
-
+    return {"torneios": torneios_mock}

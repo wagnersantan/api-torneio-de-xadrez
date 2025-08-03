@@ -1,10 +1,19 @@
-# app/routes/enxadrista_routes.py
-
 from fastapi import APIRouter
-from app.models.enxadrista_model import Enxadrista
-from app.repositories.enxadrista_repository import cadastrar_enxadrista, listar_enxadristas
+from pydantic import BaseModel
 
 router = APIRouter()
+
+# Modelo simplificado para teste (copie o que usar no seu modelo real)
+class Enxadrista(BaseModel):
+    nome: str
+    categoria: str
+    rating: int
+
+# Dados simulados em memória
+enxadristas_mock = [
+    Enxadrista(nome="Magnus Carlsen", categoria="Adulto", rating=2850),
+    Enxadrista(nome="Hikaru Nakamura", categoria="Adulto", rating=2750),
+]
 
 @router.get('/')
 def home():
@@ -12,15 +21,13 @@ def home():
 
 @router.post("/jogador/")
 def cadastrar_enxadrista_route(enxadrista: Enxadrista):
-    # Chamando o repositório para cadastrar o enxadrista
-    enxadrista_cadastrado = cadastrar_enxadrista(enxadrista)
+    # Só retorna o que recebeu sem salvar, simulando cadastro
     return {
-        "mensagem": "Enxadrista cadastrado com sucesso!",
-        "dados": enxadrista_cadastrado
+        "mensagem": "Enxadrista cadastrado com sucesso (simulado)!",
+        "dados": enxadrista
     }
 
 @router.get("/jogador/", response_model=list[Enxadrista])
 def listar_enxadristas_route():
-    # Chamando o repositório para listar os enxadristas
-    return listar_enxadristas()
-
+    # Retorna a lista mockada
+    return enxadristas_mock
