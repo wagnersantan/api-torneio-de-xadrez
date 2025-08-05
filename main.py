@@ -1,6 +1,9 @@
 from fastapi import FastAPI
-from app.routes.enxadrista_routes import router as enxadrista_routes
-from app.routes.torneio_routes import router as torneio_routes
+from app.api.v1.routes.enxadrista_routes import router as enxadrista_routes
+from app.api.v1.routes.torneio_routes import router as torneio_routes
+
+
+
 # Comentado o import da conexão com Mongo para evitar erro
 # from app.database.connection import db, torneio_collection  
 from datetime import datetime

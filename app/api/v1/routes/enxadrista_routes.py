@@ -11,8 +11,8 @@ class Enxadrista(BaseModel):
 
 # Dados simulados em memória
 enxadristas_mock = [
-    Enxadrista(nome="Magnus Carlsen", categoria="Adulto", rating=2850),
-    Enxadrista(nome="Hikaru Nakamura", categoria="Adulto", rating=2750),
+    Enxadrista(nome="Mauricio Fernandes", categoria="Adulto", rating=2850),
+    Enxadrista(nome="Daniel Malta", categoria="Adulto", rating=2840),
 ]
 
 @router.get('/')
