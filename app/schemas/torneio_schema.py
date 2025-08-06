@@ -1,27 +1,25 @@
-from pydantic import BaseModel, Field
-from typing import List, Optional
-from uuid import UUID
-from datetime import date
+from pydantic import BaseModel
+from datetime import datetime
+from enum import Enum
+from typing import Optional
 
+class StatusTorneioEnum(str, Enum):
+    ABERTO = "aberto"
+    ENCERRADO = "encerrado"
+    EM_ANDAMENTO = "em_andamento"
 
 class TorneioBase(BaseModel):
-    nome: str = Field(..., example="Torneio Aberto de Verão")
-    local: str = Field(..., example="Salvador")
-    data: date = Field(..., example="2025-09-10")
-    descricao: Optional[str] = Field(default=None, example="Evento oficial da Federação")
-
+    nome: str
+    status: StatusTorneioEnum
+    data_inicio: datetime
+    data_fim: datetime
+    local: str
 
 class TorneioCreate(TorneioBase):
     pass
 
-
-class TorneioUpdate(TorneioBase):
-    pass
-
-
-class TorneioResponse(TorneioBase):
-    id: UUID
-    participantes: Optional[List[UUID]] = []
+class TorneioRead(TorneioBase):
+    id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True  # Pydantic v2 substitui orm_mode
