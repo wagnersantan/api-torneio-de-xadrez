@@ -1,5 +1,5 @@
 
-## API de Torneio de Xadrez
+# API de Torneio de Xadrez
 
 Esta é uma **API RESTful** construída com **FastAPI** para organizar e gerenciar torneios de xadrez. A API permite o registro de jogadores, a exibição de dados dos torneios, além da gestão de jogadores, árbitros e organizadores.
 
@@ -19,31 +19,44 @@ Esta é uma **API RESTful** construída com **FastAPI** para organizar e gerenci
 
 ## Estrutura do Projeto
 
-A arquitetura do projeto foi organizada de forma modular para fácil manutenção e escalabilidade. A estrutura de diretórios é a seguinte:
-```
 api-torneio-de-xadrez/
+├── LICENSE
+├── README.md
 ├── app/
-│ ├── init.py # Arquivo de inicialização
-│ ├── database/ # Conexões e configurações do banco de dados
-│ │ └── connection.py # Configuração da conexão com o MongoDB
-│ ├── models/ # Modelos de dados
-│ │ ├── enxadrista_model.py # Modelo de jogador
-│ │ └── torneio_model.py # Modelo de torneio
-│ ├── repositories/ # Lógica de acesso a dados (CRUD)
-│ │ ├── enxadrista_repository.py # Repositório de jogadores
-│ │ └── torneio_repository.py # Repositório de torneios
-│ ├── routes/ # Endpoints da API
-│ │ ├── enxadrista_routes.py # Endpoints para jogadores
-│ │ └── torneio_routes.py # Endpoints para torneios
-├── main.py # Arquivo principal que executa o servidor FastAPI
-├── requirements.txt # Dependências do projeto
-└── tests/ # Testes automatizados
-├── init.py
-├── conftest.py # Configurações de teste
-└── test_main.py # Testes principais da API
-```
+│ ├── init.py
+│ ├── core/
+│ │ └── config.py
+│ ├── database/
+│ │ └── connection.py
+│ ├── models/
+│ │ ├── enxadrista_model.py
+│ │ ├── torneio_model.py
+│ │ └── torneio_model_sqlalchemy.py
+│ ├── repositories/
+│ │ ├── enxadrista_repository.py
+│ │ └── torneio_repository.py
+│ ├── schemas/
+│ │ ├── auth_schema.py
+│ │ ├── enxadrista_schema.py
+│ │ └── torneio_schema.py
+│ ├── services/
+│ │ ├── enxadrista_service.py
+│ │ └── torneio_service.py
+│ ├── routes/
+│ │ ├── enxadrista_routes.py
+│ │ └── torneio_routes.py
+│ └── utils/
+│ └── helpers.py
+├── chess.db
+├── create_tables.py
+├── main.py
+├── requirements.txt
+├── tests/
+│ ├── init.py
+│ ├── conftest.py
+│ └── test_main.py
+└── venv/
 
----
 
 ---
 
@@ -52,76 +65,49 @@ api-torneio-de-xadrez/
 - Python 3.7+
 - Uvicorn
 - FastAPI
-- MongoDB (recomendado para produção, opcional para testes em modo simulado)
+- MongoDB (opcional, para testes simulados)
+- SQLAlchemy (para persistência com SQLite)
 
 ---
 
 ## Como Rodar a Aplicação
 
-### Passo a Passo para Instalação
-
-1. **Clone o repositório**:
-
+### 1. Clonar o repositório
 ```bash
 git clone https://github.com/wagnersantan/api-torneio-de-xadrez.git
 cd api-torneio-de-xadrez
 
+. Criar ambiente virtual
 
-2. **Crie um ambiente virtual**:
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-  python3 -m venv venv
-source venv/bin/activate  # No Windows, use: venv\Scripts\activate
+. Instalar dependências
 
-3. **Instale as dependências**:
+pip install -r requirements.txt
 
- pip install -r requirements.txt
+. Modo de execução
+ Com SQLite/SQLAlchemy (produção)
+Verifique se o arquivo chess.db existe ou rode o script:
 
+python create_tables.py
 
-4.*** Modo com MongoDB configurado (produção):
-
-Certifique-se de que o MongoDB esteja rodando localmente ou configure sua conexão com MongoDB em nuvem no arquivo app/database/connection.py.
-
-Depois, execute:
-
-   uvicorn main:app --reload
-
-Modo simulado (sem banco de dados, para testes rápidos):
-
-Comente ou remova as partes do código que fazem conexão com o banco (como no main.py a função que insere torneio de teste e as chamadas ao db), para evitar erros de conexão.
-
-Depois, execute:
+Execute a API:
 
 uvicorn main:app --reload
----
+
+Modo simulado com MongoDB (para testes rápidos)
+Comente ou remova as partes do código que fazem conexão real com o MongoDB (ex.: no main.py ou funções de teste).
+
+Execute:uvicorn main:app --reload
 
 Testando a API
-Você pode testar os endpoints da API de forma interativa através da documentação gerada automaticamente pelo FastAPI:
-
 Swagger UI: http://127.0.0.1:8000/docs
 
 ReDoc: http://127.0.0.1:8000/redoc
 
----
-
-## Testes
-
-Para rodar os testes automatizados, utilize o framework **pytest**. Execute o seguinte comando:
-
-```bash
+Testes Automatizados
 pytest
-```
-
----
-
-## Licença
-
-Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais informações.
-
----
-
-## Contribuição
-
-Contribuições são bem-vindas! Para sugerir melhorias ou corrigir problemas, por favor, siga as instruções abaixo:
 
 1. Faça o **fork** do repositório.
 2. Crie uma **branch** para a sua modificação.
