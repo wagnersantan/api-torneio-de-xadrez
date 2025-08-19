@@ -2,6 +2,7 @@
 
 Esta é uma **API RESTful** construída com **FastAPI** para organizar e gerenciar torneios de xadrez. A API permite o registro de jogadores, a exibição de dados dos torneios, além da gestão de jogadores, árbitros e organizadores.
 
+
 ---
 
 ## Funcionalidades
@@ -106,4 +107,15 @@ Swagger UI: http://127.0.0.1:8000/docs
 ReDoc: http://127.0.0.1:8000/redoc
 
 Testes Automatizados
+
 pytest
+
+1. Faça o **fork** do repositório.
+2. Crie uma **branch** para a sua modificação.
+3. Envie um **pull request** explicando as mudanças realizadas.
+
+---
+
+**Desenvolvido por**: Wagner Santana
+
+
