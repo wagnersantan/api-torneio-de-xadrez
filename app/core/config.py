@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Torneio de Xadrez API"
     VERSION: str = "1.0.0"
     API_PREFIX: str = "/api"
+    DEBUG: bool = True  # adicionamos para evitar erro de extra inputs
 
     # Configuração do banco SQLite
     BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
