@@ -1,0 +1,1 @@
+from .pontuacao import router
