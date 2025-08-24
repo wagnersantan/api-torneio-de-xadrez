@@ -19,63 +19,65 @@ A API permite o registro de jogadores, a exibição de dados dos torneios, além
 
 ## Estrutura do Projeto
 ---
+
+```text
+api-torneio-de-xadrez/
 ├── LICENSE
 ├── README.md
-├── pycache/
-│ └── main.cpython-312.pyc
+├── __pycache__/
+│   └── main.cpython-312.pyc
 ├── app/
-│ ├── init.py
-│ ├── pycache/
-│ │ ├── init.cpython-312.pyc
-│ │ └── main.cpython-312.pyc
-│ ├── api/
-│ │ ├── pycache/
-│ │ └── v1/
-│ ├── core/
-│ │ ├── pycache/
-│ │ └── config.py
-│ ├── database/
-│ │ └── connection.py
-│ ├── main.py
-│ ├── models/
-│ │ ├── init.py
-│ │ ├── enxadrista_model.py
-│ │ ├── torneio_model.py
-│ │ └── torneio_model_sqlalchemy.py
-│ ├── repositories/
-│ │ ├── enxadrista_repository.py
-│ │ └── torneio_repository.py
-│ ├── schemas/
-│ │ ├── init.py
-│ │ ├── auth_schema.py
-│ │ ├── enxadrista_schema.py
-│ │ └── torneio_schema.py
-│ ├── services/
-│ │ ├── enxadrista_service.py
-│ │ └── torneio_service.py
-│ └── utils/
-│ └── helpers.py
+│   ├── __init__.py
+│   ├── __pycache__/
+│   │   ├── __init__.cpython-312.pyc
+│   │   └── main.cpython-312.pyc
+│   ├── api/
+│   │   ├── __pycache__/
+│   │   └── v1/
+│   ├── core/
+│   │   ├── __pycache__/
+│   │   └── config.py
+│   ├── database/
+│   │   └── connection.py
+│   ├── main.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── enxadrista_model.py
+│   │   ├── torneio_model.py
+│   │   └── torneio_model_sqlalchemy.py
+│   ├── repositories/
+│   │   ├── enxadrista_repository.py
+│   │   └── torneio_repository.py
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── auth_schema.py
+│   │   ├── enxadrista_schema.py
+│   │   └── torneio_schema.py
+│   ├── services/
+│   │   ├── enxadrista_service.py
+│   │   └── torneio_service.py
+│   └── utils/
+│       └── helpers.py
 ├── chess.db
 ├── create_tables.py
 ├── requirements.txt
 ├── tests/
-│ ├── init.py
-│ ├── pycache/
-│ │ ├── init.cpython-312.pyc
-│ │ ├── conftest.cpython-312-pytest-8.3.5.pyc
-│ │ └── test_main.cpython-312-pytest-8.3.5.pyc
-│ ├── conftest.py
-│ └── test_main.py
+│   ├── __init__.py
+│   ├── __pycache__/
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── conftest.cpython-312-pytest-8.3.5.pyc
+│   │   └── test_main.cpython-312-pytest-8.3.5.pyc
+│   ├── conftest.py
+│   └── test_main.py
 └── venv/
-├── bin/
-├── etc/
-├── include/
-├── lib/
-├── lib64 -> lib
-├── pyvenv.cfg
-└── share/
+    ├── bin/
+    ├── etc/
+    ├── include/
+    ├── lib/
+    ├── lib64 -> lib
+    ├── pyvenv.cfg
+    └── share/
 
----
 
 ## Requisitos
 
