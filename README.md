@@ -1,7 +1,7 @@
 # API de Torneio de Xadrez
 
-Esta é uma **API RESTful** construída com **FastAPI** para organizar e gerenciar torneios de xadrez. A API permite o registro de jogadores, a exibição de dados dos torneios, além da gestão de jogadores, árbitros e organizadores.
-
+Esta é uma **API RESTful** construída com **FastAPI** para organizar e gerenciar torneios de xadrez.  
+A API permite o registro de jogadores, a exibição de dados dos torneios, além da gestão de jogadores, árbitros e organizadores.
 
 ---
 
@@ -18,17 +18,27 @@ Esta é uma **API RESTful** construída com **FastAPI** para organizar e gerenci
 ---
 
 ## Estrutura do Projeto
-
-api-torneio-de-xadrez/
+---
 ├── LICENSE
 ├── README.md
+├── pycache/
+│ └── main.cpython-312.pyc
 ├── app/
 │ ├── init.py
+│ ├── pycache/
+│ │ ├── init.cpython-312.pyc
+│ │ └── main.cpython-312.pyc
+│ ├── api/
+│ │ ├── pycache/
+│ │ └── v1/
 │ ├── core/
+│ │ ├── pycache/
 │ │ └── config.py
 │ ├── database/
 │ │ └── connection.py
+│ ├── main.py
 │ ├── models/
+│ │ ├── init.py
 │ │ ├── enxadrista_model.py
 │ │ ├── torneio_model.py
 │ │ └── torneio_model_sqlalchemy.py
@@ -36,27 +46,34 @@ api-torneio-de-xadrez/
 │ │ ├── enxadrista_repository.py
 │ │ └── torneio_repository.py
 │ ├── schemas/
+│ │ ├── init.py
 │ │ ├── auth_schema.py
 │ │ ├── enxadrista_schema.py
 │ │ └── torneio_schema.py
 │ ├── services/
 │ │ ├── enxadrista_service.py
 │ │ └── torneio_service.py
-│ ├── routes/
-│ │ ├── enxadrista_routes.py
-│ │ └── torneio_routes.py
 │ └── utils/
 │ └── helpers.py
 ├── chess.db
 ├── create_tables.py
-├── main.py
 ├── requirements.txt
 ├── tests/
 │ ├── init.py
+│ ├── pycache/
+│ │ ├── init.cpython-312.pyc
+│ │ ├── conftest.cpython-312-pytest-8.3.5.pyc
+│ │ └── test_main.cpython-312-pytest-8.3.5.pyc
 │ ├── conftest.py
 │ └── test_main.py
 └── venv/
-
+├── bin/
+├── etc/
+├── include/
+├── lib/
+├── lib64 -> lib
+├── pyvenv.cfg
+└── share/
 
 ---
 
@@ -65,12 +82,8 @@ api-torneio-de-xadrez/
 - Python 3.7+
 - Uvicorn
 - FastAPI
-- MongoDB (opcional, para testes simulados)
 - SQLAlchemy (para persistência com SQLite)
-
----
-
-## Como Rodar a Aplicação
+- MongoDB (opcional, para testes simulados)
 
 ### 1. Clonar o repositório
 ```bash
@@ -86,15 +99,16 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 
 pip install -r requirements.txt
 
-. Modo de execução
- Com SQLite/SQLAlchemy (produção)
+Executar a API
+
+Com SQLite/SQLAlchemy (produção)
 Verifique se o arquivo chess.db existe ou rode o script:
 
 python create_tables.py
 
 Execute a API:
 
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 
 Modo simulado com MongoDB (para testes rápidos)
 Comente ou remova as partes do código que fazem conexão real com o MongoDB (ex.: no main.py ou funções de teste).
@@ -116,6 +130,6 @@ pytest
 
 ---
 
-**Desenvolvido por**: Wagner Santana
+Esse README já está alinhado com a sua **nova arquitetura** (`app/api/v1`, `core`, `database`, etc.) e atualizado para que o **uvicorn rode a partir de `app.main:app`**.
 
 
