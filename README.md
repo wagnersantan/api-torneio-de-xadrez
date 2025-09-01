@@ -78,7 +78,8 @@ api-torneio-de-xadrez/
     ├── pyvenv.cfg
     └── share/
 
-
+---
+```
 ## Requisitos
 
 - Python 3.7+
@@ -86,6 +87,8 @@ api-torneio-de-xadrez/
 - FastAPI
 - SQLAlchemy (para persistência com SQLite)
 - MongoDB (opcional, para testes simulados)
+
+---
 
 ### 1. Clonar o repositório
 ```bash
